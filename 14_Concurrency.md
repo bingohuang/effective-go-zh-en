@@ -124,7 +124,7 @@ doSomethingForAWhile()
 ```
 Receivers always block until there is data to receive. If the channel is unbuffered, the sender blocks until the receiver has received the value. If the channel has a buffer, the sender blocks only until the value has been copied to the buffer; if the buffer is full, this means waiting until some receiver has retrieved a value.
 
-接收者在收到数据前会一直阻塞。若信道是不带缓冲的，那么在接收者收到值前， 发送者会一直阻塞；若信道是带缓冲的，则发送者直到值被复制到缓冲区才开始阻塞； 若缓冲区已满，发送者会一直等待直到某个接收者取出一个值为止。
+接收者在收到数据前会一直阻塞。若信道是不带缓冲的，那么在接收者收到值前， 发送者会一直阻塞；若信道是带缓冲的，则发送者仅仅只需阻塞到值被复制到缓冲区； 若缓冲区已满，发送者会一直等待直到某个接收者取出一个值为止。
 
 A buffered channel can be used like a semaphore, for instance to limit throughput. In this example, incoming requests are passed to handle, which sends a value into the channel, processes the request, and then receives a value from the channel to ready the “semaphore” for the next consumer. The capacity of the channel buffer limits the number of simultaneous calls to process.
 
